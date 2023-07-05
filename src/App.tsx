@@ -2,7 +2,18 @@ import * as React from 'react';
 import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import L from 'leaflet';
+
 const API_BASE_URL = 'http://localhost:30000'; // Replace with your API server URL
+
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 function App() {
   const [vehicleId, setVehicleId] = useState('');
